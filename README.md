@@ -1,4 +1,4 @@
-# Complexity Example Console
+# Complexity Example (Console)
 
 Um exemplo de resolução tentando obter o maior valor de uma lista pirâmide. Listas Pirâmides seguem a seguinte regra: Ela é crescente até um pico em uma posição qualquer do vetor, a partir dai, ela é decrescente. Por exemplo o vetor [1, 2, 3, 2, 1] é um tipo de coleção pirâmide.
 
