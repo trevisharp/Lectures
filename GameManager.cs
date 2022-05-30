@@ -47,7 +47,15 @@ public static class GameManager
         {
             if (!initializated)
             {
-                init.Invoke(null, new object?[] { installer });
+                foreach (var param in init.GetParameters())
+                {
+                    if (param.ParameterType == typeof(Installer))
+                    {
+                        parametercall.Add(installer);
+                    }
+                }
+                init.Invoke(null, parametercall.ToArray());
+                parametercall.Clear();
                 initializated = true;
                 
                 // Load run parameters
