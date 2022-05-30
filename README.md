@@ -1,4 +1,4 @@
-# Contol Car
+# Control Car Challenge
 
 - Objetivo:
 Controlar o carro para dar uma volta na pista
