@@ -17,6 +17,7 @@ public class Car : IDrawable
     
     public PointF Location { get; private set; } = new PointF(100, 500);
     public SizeF Velocity { get; private set; } = SizeF.Empty;
+    public SizeF Acceleration { get; private set; } = SizeF.Empty;
     public SizeF Size { get; private set; } = new SizeF(50f, 100f);
     public float Angle { get; private set; } = 0f;
     public float RoadAngle { get; private set; } = 0f;
