@@ -53,6 +53,10 @@ public static class GameManager
                     {
                         parametercall.Add(installer);
                     }
+                    else if (param.ParameterType == typeof(Installer))
+                    {
+                        parametercall.Add(log);
+                    }
                 }
                 init.Invoke(null, parametercall.ToArray());
                 parametercall.Clear();

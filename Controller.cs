@@ -17,4 +17,18 @@ public class Controller
         get => Car.StepAngle;
         set => Car.StepAngle = value;
     }
+
+    public bool ISBrakeSystemOn
+    {
+        get => Car.BrakeOn;
+        set
+        {
+            if (value)
+            {
+                Car.EngineVoltage = 0f;
+                Car.BrakeOn = true;
+            }
+            else Car.BrakeOn = false;
+        }
+    }
 }

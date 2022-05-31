@@ -23,6 +23,7 @@ public class Car : IDrawable
     public PointF Center => Location + Size / 2f;
     public float EngineVoltage { get; set; }
     public float StepAngle { get; set; }
+    public bool BrakeOn { get; set; } = false;
 
     public void Draw(Graphics g)
     {

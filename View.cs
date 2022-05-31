@@ -51,6 +51,8 @@ public class View
 
             foreach (var drawable in this.DrawableCollection)
             {
+                if (drawable is Car car)
+                    car.Update(0.025f);
                 drawable.Draw(g);
             }
             g.DrawString(printtext, SystemFonts.CaptionFont, Brushes.Black, 
