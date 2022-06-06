@@ -1,8 +1,11 @@
 using System;
 using System.Reflection;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace VisualLogic;
+
+using Exceptions;
 
 public class DependecyInjectionManager
 {
@@ -12,8 +15,27 @@ public class DependecyInjectionManager
         public object Value { get; set; }
         public Predicate<string> Condition { get; set; }
     }
+    
+    #region Private Fields
+
     private Dictionary<string, MethodInfo> methods = new Dictionary<string, MethodInfo>();
     private List<InstanceDefinition> instances = new List<InstanceDefinition>();
+
+    #endregion
+
+    #region Public Methods
+
+    public void AddInstance<T>(T value, Predicate<string> condition = null)
+    {
+        if (condition == null)
+            condition = s => true;
+        InstanceDefinition def = new InstanceDefinition();
+        def.Type = typeof(T);
+        def.Value = value;
+        def.Condition = condition;
+        this.instances.Add(def);
+    }
+    
     public void AddMethod(string name)
     {
         var types = Assembly.GetExecutingAssembly().GetTypes();
@@ -38,6 +60,26 @@ public class DependecyInjectionManager
         if (name == null || !methods.ContainsKey(name))
             throw new Exception("Invalid method name");
         run(methods[name]);
+    }
+
+    public async Task RunAsync(string name)
+    {
+        await Task.Factory.StartNew(() =>
+        {
+            Run(name);
+        });
+    }
+    
+    #endregion
+
+    #region Private Methods
+
+    public async Task RunAllAsync()
+    {
+        await Task.Factory.StartNew(() =>
+        {
+            RunAll();
+        });
     }
 
     private void run(MethodInfo method)
@@ -75,4 +117,6 @@ public class DependecyInjectionManager
             return;
         }
     }
+
+    #endregion
 }

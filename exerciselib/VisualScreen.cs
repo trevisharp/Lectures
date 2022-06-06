@@ -40,6 +40,11 @@ public class VisualScreen
             this.g.Clear(Color.White);
             this.pb.Image = this.bmp;
             
+            VisualArgs args = new VisualArgs();
+            args.Bitmap = bmp;
+            args.Form = form;
+            args.Graphics = g;
+            args.PictureBox = pb;
         };
         Application.Run(this.form);
     }

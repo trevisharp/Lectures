@@ -1,6 +1,6 @@
 using System;
 
-namespace VisualLogic;
+namespace VisualLogic.Exceptions;
 
 public class InexistentInstanceDefinitionException : Exception
 {
