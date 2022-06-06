@@ -3,6 +3,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using System.Reflection;
 using System.Threading.Tasks;
+using System.Runtime.CompilerServices;
 
 public static class LogicApp
 {
@@ -15,7 +16,7 @@ public static class LogicApp
             {
                 foreach (var func in type.GetRuntimeMethods())
                 {
-                    if (func.Name.ToLower().Contains("solution"))
+                    if (func.GetCustomAttribute<CompilerGeneratedAttribute>() != null)
                     {
                         solution = func;
                         break;
