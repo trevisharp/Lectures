@@ -6,4 +6,8 @@
     <TargetFramework>net6.0-windows</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="VisualLogic" Version="1.2.0" />
+  </ItemGroup>
+
 </Project>
