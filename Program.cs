@@ -17,7 +17,7 @@ for (int n = 1; n < 20; n++)
     sw.Reset();
     sw.Start();
     for (int i = 0; i < testes; i++)
-        solution4(vetores[testes * (n - 1) + i]);
+        solution1(vetores[testes * (n - 1) + i]);
     sw.Stop();
     Console.WriteLine($"n = {500 * n}: {sw.ElapsedMilliseconds / 1000.0} s");
 }
